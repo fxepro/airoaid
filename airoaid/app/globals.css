@@ -1,0 +1,42 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Barlow', sans-serif; background: #fff; color: #003366; overflow-x: hidden; }
+
+@keyframes ring {
+  0%   { transform: scale(1);   opacity: .7; }
+  100% { transform: scale(1.8); opacity: 0;  }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+.pulse {
+  width: 11px; height: 11px; background: #22c55e;
+  border-radius: 50%; position: relative; display: inline-block;
+}
+.pulse::after {
+  content: ''; position: absolute; inset: -4px;
+  border-radius: 50%; background: #22c55e;
+  animation: ring 1.6s ease-out infinite;
+}
+
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+.reveal.in { opacity: 1; transform: none; }
+
+/* responsive grids — used via className only, never in purged Tailwind */
+@media (max-width: 900px) {
+  .resp-two   { grid-template-columns: 1fr !important; }
+  .resp-four  { grid-template-columns: 1fr 1fr !important; }
+  .resp-three { grid-template-columns: 1fr !important; }
+  .resp-hide  { display: none !important; }
+  .resp-pricing-div { display: none !important; }
+}
+@media (max-width: 600px) {
+  .resp-four  { grid-template-columns: 1fr !important; }
+  .resp-nav   { display: none !important; }
+}
+
+input, textarea, select {
+  font-family: 'Barlow', sans-serif;
+}
